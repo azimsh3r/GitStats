@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Repository Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h2>Information about Repository</h2>
+<p><strong>Name:</strong> <span th:text="${repository.name}"></span></p>
+<p><strong>Description:</strong> <span th:text="${repository.description}"></span></p>
+<p><strong>URL:</strong> <a th:href="@{${repository.htmlUrl}}"><span th:text="${repository.htmlUrl}"></span></a></p>
+<p><strong>Stars:</strong> <span th:text="${repository.stargazersCount}"></span></p>
+
+<h3>Pairs of developers with the most frequent common commits</h3>
+
+<table>
+    <thead>
+    <tr>
+        <th>Developer 1</th>
+        <th>Developer 2</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${developerPairs}">
+        <td th:text="${entry.key}"></td>
+        <td th:text="${entry.value}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

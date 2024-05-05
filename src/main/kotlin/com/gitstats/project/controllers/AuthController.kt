@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping
 @Controller
 @RequestMapping("/auth")
 class AuthController {
-
     @GetMapping("/login")
     fun login(model: Model) : String {
         model.addAttribute("authPrincipal", AuthPrincipal())

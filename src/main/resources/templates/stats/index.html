@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RepoTracker</title>
+    <title>RepoStats</title>
     <style>
         body {
             overflow-x: hidden;
             background-color: #f2f2f2; /* Bright background color */
             color: #333; /* Dark text color */
             font-family: Arial, sans-serif;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         h2 {
@@ -90,7 +92,7 @@
 </head>
 <body>
 <h2>Search repositories</h2>
-<form th:method="POST" th:action="@{/track}" th:object="${searchEntity}">
+<form th:method="POST" th:action="@{/stats}" th:object="${searchEntity}">
     <label for="author">Creator</label>
     <input id="author" th:type="text" th:field="*{author}" th:value="${searchEntity.author}"/>
     <br>
@@ -101,7 +103,7 @@
 <div th:each="repository: ${repositories}">
     <div class="link-container">
         <a th:href="${repository.htmlUrl}" th:text="${repository.fullName}"></a>
-        <form th:method="POST" th:action="@{/track/repoAnalytics}">
+        <form th:method="POST" th:action="@{/stats/repoAnalytics}">
             <input type="hidden" name="repositoryFullName" th:value="${repository.fullName}"/>
             <button class="analytics-button">View Analytics</button>
         </form>

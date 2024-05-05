@@ -2,15 +2,13 @@ package com.gitstats.project.controllers
 
 import com.gitstats.project.models.SearchEntity
 import com.gitstats.project.services.StatsService
-import org.kohsuke.github.GHRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
-import org.springframework.stereotype.Repository
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 
 @Controller
-@RequestMapping("/track")
+@RequestMapping("/stats")
 class StatsController (@Autowired val statsService: StatsService){
 
     @GetMapping

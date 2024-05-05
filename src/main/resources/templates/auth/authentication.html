@@ -66,7 +66,7 @@
     </style>
 </head>
 <body>
-<h2>Authorize</h2>
+<h2>Authorize to your account</h2>
 <form th:method="POST" th:action="@{/auth/process-login}" th:object="${authPrincipal}">
     <label for="username">Username (optional)</label>
     <input id="username" name="username" th:field="*{username}" type="text"/>

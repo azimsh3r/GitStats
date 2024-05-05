@@ -14,9 +14,8 @@ class AuthService (@Autowired val restClient: RestClient){
         var token: String = ""
     }
     fun authenticate (authPrincipal: AuthPrincipal) {
-        var response: ResponseEntity<Void>
         try {
-            response = restClient
+            val response = restClient
                 .get()
                 .uri("https://api.github.com/user")
                 .header("Authorization", "token ${authPrincipal.password}")

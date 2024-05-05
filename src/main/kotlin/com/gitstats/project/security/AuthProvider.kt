@@ -23,7 +23,6 @@ class AuthProvider : AuthenticationProvider {
         val authPrincipal = AuthPrincipal()
         authPrincipal.username = username
         authPrincipal.password = password
-
         try {
             authService.authenticate(authPrincipal)
         } catch (e: BadCredentialsException) {

@@ -2,7 +2,6 @@ package com.gitstats.project.services
 
 import org.kohsuke.github.GHRepository
 import org.kohsuke.github.GitHub
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import java.io.IOException
 
@@ -49,7 +48,6 @@ class StatsService {
                 for (dev1 in devSet) {
                     for (dev2 in devSet) {
                         if (dev1 != dev2) {
-                            val pairKey = if (dev1 < dev2) "$dev1-$dev2" else "$dev2-$dev1"
                             // Increment the count for the developer pair
                             contributorPair.getOrPut(dev1) { mutableMapOf() }
                                 .merge(dev2, 1, Int::plus)
@@ -59,9 +57,9 @@ class StatsService {
             }
 
             // Finds people with the highest contribution frequency
-            for ((fileName, pairs) in contributorPair) {
-                val topPair: String? = pairs.entries.maxByOrNull { it.value }?.key
-                mostFreqMap[fileName] = topPair ?: "error"
+            for ((dev1, dev2AndCounter) in contributorPair) {
+                val topPair: String? = dev2AndCounter.entries.maxByOrNull { it.value }?.key
+                mostFreqMap[dev1] = topPair ?: "error"
             }
         } catch (e: IOException) {
             println(e.message)

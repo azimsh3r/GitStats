@@ -57,8 +57,8 @@ class StatsService {
             }
 
             // Finds people with the highest contribution frequency
-            for ((dev1, dev2AndCounter) in contributorPair) {
-                val topPair: String? = dev2AndCounter.entries.maxByOrNull { it.value }?.key
+            for ((dev1, dev2CounterMap) in contributorPair) {
+                val topPair: String? = dev2CounterMap.entries.maxByOrNull { it.value }?.key
                 mostFreqMap[dev1] = topPair ?: "error"
             }
         } catch (e: IOException) {
